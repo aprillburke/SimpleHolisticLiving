@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simple Holistic Lifestyle Home</title>
+<base target="_top">
+<!-- =====================================================================
+  CONFIG: edit this block only. Paste the whole file into a Wix "Embed HTML" element.
+  Every link goes to your real Wix site (the embed lives on a different domain),
+  so paths are joined to siteUrl. Items marked CONFIRM are guesses to check.
+===================================================================== -->
+<script>
+const CONFIG = {
+  siteUrl: "https://www.simpleholisticlifestyle.com",   
+  paths: {                                              // CONFIRM each path in Wix
+    blog:  "/blog",
+    shop: "shop.html",
+    about: "about.html",
+    categoryBase: "/blog/categories/"
+  },
+  social: { instagram: "https://www.instagram.com/simple_holisticlifestyle/", pinterest: "https://www.pinterest.com/aprillburke1/" },
+  showAnnouncement: true,                               // OPEN ITEM: set false if no lead magnet
+  showFooter: false,                                    // true only if you skip the native Wix footer
+};
+
+/* IMAGES: paste a Wix media URL (https://static.wixstatic.com/media/...) into src */
+const IMAGES = {
+  heroLogo: { src: "", alt: "Simple Holistic Lifestyle logo" },
+  post1:    { src: "", alt: "A tidy non-toxic kitchen counter" },
+  post2:    { src: "", alt: "Clean cookware on a kitchen shelf" },
+  post3:    { src: "", alt: "A mineral bath and a cup of calming tea" },
+  shop1:    { src: "", alt: "Product photo 1" },
+  shop2:    { src: "", alt: "Product photo 2" },
+  shop3:    { src: "", alt: "Product photo 3" },
+  shop4:    { src: "", alt: "Product photo 4" },
+  about:    { src: "https://static.wixstatic.com/media/d590bd_0ffeaff4b6f443098e096532ba0a2de1~mv2.jpg", alt: "April, founder of Simple Holistic Lifestyle" }
+};
+
+/* START HERE tiles. slug is the Wix blog category slug (CONFIRM). */
+const CATEGORIES = [
+  { n:"01", title:"Non-Toxic Kitchen",        slug:"non-toxic-kitchen",        desc:"Cookware, storage and swaps for the heart of the home." },
+  { n:"02", title:"Clean Beauty + Skincare",  slug:"clean-beauty-skincare",    desc:"Simple routines with ingredients you can read." },
+  { n:"03", title:"Holistic Home",            slug:"holistic-home",            desc:"Calm spaces, natural materials, small daily habits." },
+  { n:"04", title:"Natural Baby + Kids",      slug:"natural-baby-kids",        desc:"Gentle picks for little ones, from snacks to gear." },
+  { n:"05", title:"Gut Health + Nutrition",   slug:"gut-health-nutrition",     desc:"Everyday food ideas the whole family will eat." },
+  { n:"06", title:"Wellness Rituals",         slug:"wellness-rituals",         desc:"Baths, tea and slow evenings to help you unwind." },
+  { n:"07", title:"Clean Cleaning Products",  slug:"clean-cleaning-products",  desc:"Simple cleaners and tools for a fresh, tidy home." }
+];
+
+/* LATEST POSTS: path is the Wix post URL (CONFIRM slugs) */
+const POSTS = [
+  { img:"post1", cat:"Non-Toxic Kitchen", title:"Non-Toxic Kitchen Organization: 5 Easy Swaps",
+    excerpt:"Five easy swaps that make your kitchen simpler, calmer and easier to keep tidy.",
+    path:"/post/non-toxic-kitchen-organization-5-easy-swaps" },
+  { img:"post2", cat:"Non-Toxic Kitchen", title:"Clean Cookware Essentials for Your Holistic Lifestyle",
+    excerpt:"What I looked for when replacing my cookware, and the pieces I actually reach for.",
+    path:"/post/clean-cookware-essentials" },
+  { img:"post3", cat:"Wellness Rituals", title:"Evening Reset Ritual: A Mineral Bath and Calming Tea",
+    excerpt:"A slow twenty minute routine to help you wind down at the end of the day.",
+    path:"/post/evening-reset-ritual-mineral-bath-and-calming-tea" }
+];
+
+/* SHOP BAND: four featured tiles (link to the Shop page). Edit text here. */
+const FEATURED = [
+  { img:"shop1", brand:"[Brand]", name:"Product name" },
+  { img:"shop2", brand:"[Brand]", name:"Product name" },
+  { img:"shop3", brand:"[Brand]", name:"Product name" },
+  { img:"shop4", brand:"[Brand]", name:"Product name" }
+];
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===== BRAND VARIABLES ===== */
+:root{
+  --ivory:#F9F8F4;      /* page background */
+  --cloud:#ECEDE8;      /* section bands */
+  --teal:#2E4650;       /* main text, footer */
+  --soft:#3A4F58;       /* body text */
+  --denim:#4E6A85;      /* buttons, links */
+  --label:#55697B;      /* small labels */
+  --stone:#D6D4CE;      /* borders */
+  --sage:#939F8F;       /* logo sage */
+  --dusty:#8FA9B8;      /* solid tiles only */
+  --ink:#1E2D33;        /* dark text on sage / dusty tiles */
+  --tile:#3C5764;       /* nested tiles in dark shop band */
+  --tint:#CDD5CA;       /* placeholder tint */
+  --r-card:22px; --r-nested:12px; --r-pill:999px;
+  --gutter:clamp(20px,4.5vw,56px);
+  --maxw:1200px;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* heading scale: 88 / 68 / 54 / 44 / 38 / 34 / 30 on desktop */
+  --fs-88:clamp(46px,7.2vw,88px);
+  --fs-68:clamp(40px,5.6vw,68px);
+  --fs-54:clamp(36px,4.4vw,54px);
+  --fs-44:clamp(32px,3.6vw,44px);
+  --fs-38:clamp(30px,3.1vw,38px);
+  --fs-34:clamp(28px,2.8vw,34px);
+  --fs-30:clamp(26px,2.5vw,30px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--soft);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--denim)}
+h1,h2,h3,h4,p,ul{margin:0}
+ul{padding:0;list-style:none}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--teal);line-height:1.08;overflow-wrap:break-word}
+h1 em,h2 em{font-style:italic}
+.t88{font-size:var(--fs-88);line-height:1}
+.t68{font-size:var(--fs-68);line-height:1.02}
+.t54{font-size:var(--fs-54)}
+.t44{font-size:var(--fs-44)}
+.t38{font-size:var(--fs-38)}
+.t34{font-size:var(--fs-34)}
+.t30{font-size:var(--fs-30);line-height:1.15}
+.lead{font-weight:300;font-size:17px;max-width:34em}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* focus */
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--denim);outline-offset:3px}
+.on-dark a:focus-visible,.on-dark button:focus-visible,.on-dark input:focus-visible,.announce a:focus-visible{outline-color:var(--ivory)}
+
+/* layout */
+.wrap{width:100%;max-width:calc(var(--maxw) + 2*var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+.band{padding:clamp(56px,8vw,104px) 0}
+.band--cloud{background:var(--cloud)}
+.band--teal{background:var(--teal);color:var(--ivory)}
+.sec-head{margin-bottom:clamp(28px,4vw,48px)}
+.sec-head--center{text-align:center}
+.sec-head--row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+
+/* type helpers */
+.eyebrow{font:500 13px/1.5 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--label);margin-bottom:18px;overflow-wrap:break-word}
+.on-dark .eyebrow{color:var(--stone)}
+.on-dark h1,.on-dark h2,.on-dark h3{color:var(--ivory)}
+.on-dark p{color:var(--ivory)}
+
+/* buttons: pills, 14px, 0.14em, uppercase, weight 400, 44px+ tall */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 30px;border-radius:var(--r-pill);border:1px solid var(--denim);background:var(--denim);color:#fff;font:400 14px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;text-align:center;cursor:pointer;transition:filter .2s,background .2s}
+.btn:hover{filter:brightness(.9)}
+.btn--ghost{background:transparent;color:var(--denim);border-color:var(--stone)}
+.btn--ghost:hover{filter:none;background:var(--cloud)}
+.btn--light{background:var(--ivory);border-color:var(--ivory);color:var(--teal)}
+.btn--block{width:100%}
+.btnrow{display:flex;flex-wrap:wrap;gap:14px}
+.textlink{display:inline-flex;align-items:center;min-height:44px;font:500 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--denim);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--stone)}
+.textlink:hover{text-decoration-color:var(--denim)}
+
+/* image placeholders: swap via the IMAGES object (or the products array) */
+.ph{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:var(--ar,1/1);background:var(--ph-bg,var(--tint));color:var(--ink);border-radius:var(--r-card);overflow:hidden;text-align:center;padding:12px;font:500 11px/1.5 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.ph::before{content:"[ " attr(data-label) " ]"}
+.ph.has-img::before{content:none}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph--nested{border-radius:var(--r-nested)}
+
+/* announcement */
+.announce{background:var(--denim);color:var(--ivory);text-align:center;padding:12px var(--gutter);font:400 14px/1.5 var(--sans);letter-spacing:.04em}
+.announce p{color:var(--ivory)}
+
+/* disclosures */
+.disclosure{font-size:14px;line-height:1.6;color:var(--soft)}
+.on-dark .disclosure{color:var(--ivory);opacity:.92}
+.social{display:flex;flex-wrap:wrap;gap:6px 24px}
+.social a{display:inline-flex;align-items:center;min-height:44px;font:500 13px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ivory);text-underline-offset:5px}
+
+/* footer band (used by about.html, optional on home.html) */
+.footer{background:var(--teal);color:var(--ivory);padding:clamp(40px,6vw,64px) 0}
+.footer .wrap{display:grid;gap:16px}
+.footer .disclosure{max-width:62em}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:768px){
+  .sec-head--row{align-items:flex-start}
+}
+@media (max-width:480px){
+  .btn{padding:0 22px}
+  .btnrow .btn{width:100%}
+}
+
+
+/* ===== HOME ===== */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,80px);align-items:center;padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,7vw,96px)}
+.hero h1{margin-bottom:24px}
+.hero .lead{margin-bottom:32px}
+.hero__logo{--ar:1/1;--ph-bg:var(--sage);max-width:520px;justify-self:end}
+
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px)}
+.tile{display:flex;flex-direction:column;gap:10px;padding:clamp(22px,2.4vw,30px);background:var(--ivory);border:1px solid var(--stone);border-radius:var(--r-card);text-decoration:none;color:var(--soft);min-height:210px;transition:transform .2s,border-color .2s}
+.tile:hover{transform:translateY(-3px);border-color:var(--denim)}
+.tile__n{font:500 13px/1.5 var(--sans);letter-spacing:.3em;color:var(--label)}
+.tile h3{color:var(--teal);font-size:var(--fs-30);line-height:1.1;margin-top:auto}
+.tile p{font-size:15px;line-height:1.55}
+.tile--cta{background:var(--denim);border-color:var(--denim);color:var(--ivory)}
+.tile--cta .tile__n{color:var(--ivory);letter-spacing:.3em;text-transform:uppercase}
+.tile--cta h3,.tile--cta p{color:var(--ivory)}
+.tile--cta:hover{border-color:var(--teal)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,36px)}
+.card .ph{--ar:3/2;margin-bottom:20px}
+.card .eyebrow{font-size:12px;margin-bottom:10px}
+.card h3{margin-bottom:12px}
+.card h3 a{color:var(--teal);text-decoration:none}
+.card h3 a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--stone)}
+.card p{font-size:16px;line-height:1.6;margin-bottom:6px}
+
+.shopband .sec-head p{max-width:30em;margin-top:14px;opacity:.92}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px)}
+.ptile{display:block;background:var(--tile);border-radius:var(--r-card);padding:clamp(12px,1.6vw,18px);text-decoration:none;color:var(--ivory)}
+.ptile .ph{--ph-bg:var(--cloud);margin-bottom:16px}
+.ptile__brand{font:500 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--stone);padding:0 6px}
+.ptile__name{font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.15;color:var(--ivory);padding:4px 6px 8px;margin-top:4px}
+.ptile:hover .ptile__name{text-decoration:underline;text-underline-offset:4px}
+
+.about-teaser{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,6vw,80px);align-items:center}
+.about-teaser .ph{--ar:4/5;max-width:380px}
+.about-teaser h2{margin-bottom:18px}
+.about-teaser .lead{margin-bottom:28px}
+
+
+@media (max-width:1000px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:36px}
+  .hero__logo{justify-self:start;max-width:360px}
+  .cards{grid-template-columns:1fr}
+  .about-teaser{grid-template-columns:1fr}
+  .about-teaser .ph{max-width:320px}
+  .tile{min-height:180px}
+}
+@media (max-width:480px){
+  .tiles{grid-template-columns:1fr}
+  .tile{min-height:0}
+  .tile h3{margin-top:6px}
+  .products{gap:12px}
+  .hero__logo{max-width:280px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. ANNOUNCEMENT BAR. Delete this whole div, or set showAnnouncement:false, to remove it. ===== -->
+<div class="announce" id="announce"><p>Free weekly guide: 10 easy non-toxic swaps for your home</p></div>
+<!-- ===== end announcement bar ===== -->
+
+<main>
+
+<!-- ===== 2. HERO ===== -->
+<section class="wrap hero" aria-labelledby="hero-h">
+  <div>
+    <p class="eyebrow">Non-toxic living for moms</p>
+    <h1 id="hero-h" class="t88">Living well, <em>simplified.</em></h1>
+    <p class="lead">Honest, researched swaps for a calmer, cleaner home. No overwhelm, no perfection required, just small changes that add up.</p>
+    <div class="btnrow">
+      <a class="btn" data-href="blog" target="_top" href="#">Read the blog</a>
+      <a class="btn btn--ghost" data-href="shop" target="_top" href="#">Shop my favorites</a>
+    </div>
+  </div>
+  <div class="ph hero__logo" data-img="heroLogo" data-label="Logo image"></div>
+</section>
+
+<!-- ===== 3. START HERE ===== -->
+<section class="band band--cloud" aria-labelledby="start-h">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow">Start here</p>
+      <h2 id="start-h" class="t44">Find your corner of the home</h2>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</section>
+
+<!-- ===== 4. LATEST POSTS ===== -->
+<section class="band" aria-labelledby="latest-h">
+  <div class="wrap">
+    <div class="sec-head sec-head--row">
+      <div>
+        <p class="eyebrow">From the blog</p>
+        <h2 id="latest-h" class="t44">Latest reads</h2>
+      </div>
+      <a class="textlink" data-href="blog" target="_top" href="#">View all posts</a>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<!-- ===== 5. SHOP BAND ===== -->
+<section class="band band--teal on-dark shopband" aria-labelledby="shop-h">
+  <div class="wrap">
+    <div class="sec-head sec-head--row">
+      <div>
+        <p class="eyebrow">Shop my favorites</p>
+        <h2 id="shop-h" class="t54">What I actually use at home</h2>
+        <p>The products I reach for again and again, organized by category.</p>
+      </div>
+      <a class="btn btn--light" data-href="shop" target="_top" href="#">Shop my favorites</a>
+    </div>
+    <div class="products" id="products"></div>
+  </div>
+</section>
+
+<!-- ===== 6. ABOUT TEASER ===== -->
+<section class="band" aria-labelledby="about-h">
+  <div class="wrap about-teaser">
+    <div class="ph" data-img="about" data-label="Photo of April"></div>
+    <div>
+      <p class="eyebrow">About</p>
+      <h2 id="about-h" class="t54">Hi, I'm April</h2>
+      <p class="lead">I am a mom, a wellness enthusiast, and someone who got tired of trusting labels without reading them. I share the products we actually use and the honest truth about what is worth the switch.</p>
+      <a class="btn" data-href="about" target="_top" href="#">More about me</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== 8. OPTIONAL FOOTER. Recommended: build the footer natively in Wix and set showFooter:false. ===== -->
+<footer class="footer on-dark" id="site-footer">
+  <div class="wrap">
+    <p class="disclosure">As an Amazon Associate I earn from qualifying purchases. Some links on this site are affiliate links, which means I may earn a small commission at no extra cost to you.</p>
+    <p class="disclosure">Wellness disclaimer: I am not a doctor, nutritionist or medical professional. Content on this site is for education and information only, not medical advice. Please check with your physician about any medical condition or lifestyle change.</p>
+    <div class="social" data-social></div>
+  </div>
+</footer>
+
+<script>
+/* ===== shared helpers (do not edit unless you know why) ===== */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function siteUrl(path){
+  if(!path) return '#';
+  if(path.charAt(0)!=='/' && !/^https?:\/\//i.test(path)) return path; /* GitHub copy: relative file links */
+  if(/^https?:\/\//i.test(path)) return path;
+  return CONFIG.siteUrl.replace(/\/$/,'') + path;
+}
+function wireLinks(root){
+  (root||document).querySelectorAll('a[data-href]').forEach(function(a){
+    var k=a.getAttribute('data-href');
+    a.href = siteUrl(CONFIG.paths[k] || k);
+  });
+}
+function hydrateImages(root){
+  (root||document).querySelectorAll('.ph').forEach(function(el){
+    if(el.dataset.done) return; el.dataset.done='1';
+    var cfg=(el.dataset.img && typeof IMAGES!=='undefined' && IMAGES[el.dataset.img]) || {};
+    var src=el.dataset.src||cfg.src||'';
+    var alt=el.dataset.alt||cfg.alt||'';
+    if(src){
+      var i=document.createElement('img');
+      i.src=src; i.alt=alt; i.loading='lazy'; i.decoding='async';
+      el.appendChild(i); el.classList.add('has-img');
+      el.removeAttribute('role'); el.removeAttribute('aria-label');
+    } else {
+      el.setAttribute('role','img');
+      el.setAttribute('aria-label','Image placeholder: '+(alt||el.dataset.label));
+    }
+  });
+}
+function socialHtml(){
+  var out=[];
+  if(CONFIG.social.instagram) out.push('<a href="'+esc(CONFIG.social.instagram)+'" target="_blank" rel="noopener">Instagram</a>');
+  if(CONFIG.social.pinterest) out.push('<a href="'+esc(CONFIG.social.pinterest)+'" target="_blank" rel="noopener">Pinterest</a>');
+  return out.join('');
+}
+function renderSocial(){
+  document.querySelectorAll('[data-social]').forEach(function(el){
+    var h=socialHtml();
+    if(h) el.innerHTML=h; else el.remove();
+  });
+}
+
+
+(function(){
+  if(!CONFIG.showAnnouncement){ var a=document.getElementById('announce'); if(a) a.remove(); }
+  if(!CONFIG.showFooter){ var f=document.getElementById('site-footer'); if(f) f.remove(); }
+
+  document.getElementById('tiles').innerHTML = CATEGORIES.map(function(c){
+    return '<a class="tile" target="_top" href="'+esc(siteUrl(CONFIG.paths.categoryBase + c.slug))+'">' +
+      '<span class="tile__n">'+esc(c.n)+'</span><h3>'+esc(c.title)+'</h3><p>'+esc(c.desc)+'</p></a>';
+  }).join('') +
+  '<a class="tile tile--cta" target="_top" href="'+esc(siteUrl(CONFIG.paths.blog))+'">' +
+    '<span class="tile__n">Not sure where to start?</span><h3>Browse every post</h3><p>Guides, swaps and honest reviews in one place.</p></a>';
+
+  document.getElementById('cards').innerHTML = POSTS.map(function(p){
+    var href=esc(siteUrl(p.path));
+    return '<article class="card"><div class="ph" data-img="'+esc(p.img)+'" data-label="Post photo"></div>' +
+      '<p class="eyebrow">'+esc(p.cat)+'</p>' +
+      '<h3 class="t30"><a target="_top" href="'+href+'">'+esc(p.title)+'</a></h3>' +
+      '<p>'+esc(p.excerpt)+'</p>' +
+      '<a class="textlink" target="_top" href="'+href+'">Read the post<span class="sr">: '+esc(p.title)+'</span></a></article>';
+  }).join('');
+
+  document.getElementById('products').innerHTML = FEATURED.map(function(p){
+    return '<a class="ptile" target="_top" href="'+esc(siteUrl(CONFIG.paths.shop))+'">' +
+      '<div class="ph ph--nested" data-img="'+esc(p.img)+'" data-label="Product image"></div>' +
+      '<p class="ptile__brand">'+esc(p.brand)+'</p><p class="ptile__name">'+esc(p.name)+'</p></a>';
+  }).join('');
+
+  wireLinks(); hydrateImages(); renderSocial();
+})();
+</script>
+</body>
+</html>

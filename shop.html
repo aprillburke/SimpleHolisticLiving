@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop My Favorites</title>
+<base target="_top">
+<!-- =====================================================================
+  CONFIG: edit this block only. Paste the whole file into a Wix "Embed HTML" element.
+  Items marked CONFIRM are guesses to check against your Wix site.
+===================================================================== -->
+<script>
+const CONFIG = {
+  siteUrl: "https://www.simpleholisticlifestyle.com",   
+  paths: { blog: "/blog", shop: "shop.html", about: "about.html" },   // CONFIRM
+  social: { instagram: "https://www.instagram.com/simple_holisticlifestyle/", pinterest: "https://www.pinterest.com/aprillburke1/" }
+};
+
+/* Order the groups appear on the page. Each product's "category" must match one of these. */
+const CATEGORIES = ["Non-Toxic Kitchen", "Clean Beauty + Skincare", "Natural Baby + Kids"];
+
+/* PRODUCTS: add a product by copying one line. No markup to touch.
+   image: Wix media URL (https://static.wixstatic.com/media/...) or "" for the placeholder
+   url:   your affiliate link ("" shows a dead placeholder button) */
+const PRODUCTS = [
+  { category:"Non-Toxic Kitchen", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Non-Toxic Kitchen", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Non-Toxic Kitchen", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Non-Toxic Kitchen", brand:"[Brand]", name:"Product name", image:"", url:"" },
+
+  { category:"Clean Beauty + Skincare", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Clean Beauty + Skincare", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Clean Beauty + Skincare", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Clean Beauty + Skincare", brand:"[Brand]", name:"Product name", image:"", url:"" },
+
+  { category:"Natural Baby + Kids", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Natural Baby + Kids", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Natural Baby + Kids", brand:"[Brand]", name:"Product name", image:"", url:"" },
+  { category:"Natural Baby + Kids", brand:"[Brand]", name:"Product name", image:"", url:"" }
+];
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===== BRAND VARIABLES ===== */
+:root{
+  --ivory:#F9F8F4;      /* page background */
+  --cloud:#ECEDE8;      /* section bands */
+  --teal:#2E4650;       /* main text, footer */
+  --soft:#3A4F58;       /* body text */
+  --denim:#4E6A85;      /* buttons, links */
+  --label:#55697B;      /* small labels */
+  --stone:#D6D4CE;      /* borders */
+  --sage:#939F8F;       /* logo sage */
+  --dusty:#8FA9B8;      /* solid tiles only */
+  --ink:#1E2D33;        /* dark text on sage / dusty tiles */
+  --tile:#3C5764;       /* nested tiles in dark shop band */
+  --tint:#CDD5CA;       /* placeholder tint */
+  --r-card:22px; --r-nested:12px; --r-pill:999px;
+  --gutter:clamp(20px,4.5vw,56px);
+  --maxw:1200px;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* heading scale: 88 / 68 / 54 / 44 / 38 / 34 / 30 on desktop */
+  --fs-88:clamp(46px,7.2vw,88px);
+  --fs-68:clamp(40px,5.6vw,68px);
+  --fs-54:clamp(36px,4.4vw,54px);
+  --fs-44:clamp(32px,3.6vw,44px);
+  --fs-38:clamp(30px,3.1vw,38px);
+  --fs-34:clamp(28px,2.8vw,34px);
+  --fs-30:clamp(26px,2.5vw,30px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--soft);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--denim)}
+h1,h2,h3,h4,p,ul{margin:0}
+ul{padding:0;list-style:none}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--teal);line-height:1.08;overflow-wrap:break-word}
+h1 em,h2 em{font-style:italic}
+.t88{font-size:var(--fs-88);line-height:1}
+.t68{font-size:var(--fs-68);line-height:1.02}
+.t54{font-size:var(--fs-54)}
+.t44{font-size:var(--fs-44)}
+.t38{font-size:var(--fs-38)}
+.t34{font-size:var(--fs-34)}
+.t30{font-size:var(--fs-30);line-height:1.15}
+.lead{font-weight:300;font-size:17px;max-width:34em}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* focus */
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--denim);outline-offset:3px}
+.on-dark a:focus-visible,.on-dark button:focus-visible,.on-dark input:focus-visible,.announce a:focus-visible{outline-color:var(--ivory)}
+
+/* layout */
+.wrap{width:100%;max-width:calc(var(--maxw) + 2*var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+.band{padding:clamp(56px,8vw,104px) 0}
+.band--cloud{background:var(--cloud)}
+.band--teal{background:var(--teal);color:var(--ivory)}
+.sec-head{margin-bottom:clamp(28px,4vw,48px)}
+.sec-head--center{text-align:center}
+.sec-head--row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+
+/* type helpers */
+.eyebrow{font:500 13px/1.5 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--label);margin-bottom:18px;overflow-wrap:break-word}
+.on-dark .eyebrow{color:var(--stone)}
+.on-dark h1,.on-dark h2,.on-dark h3{color:var(--ivory)}
+.on-dark p{color:var(--ivory)}
+
+/* buttons: pills, 14px, 0.14em, uppercase, weight 400, 44px+ tall */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 30px;border-radius:var(--r-pill);border:1px solid var(--denim);background:var(--denim);color:#fff;font:400 14px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;text-align:center;cursor:pointer;transition:filter .2s,background .2s}
+.btn:hover{filter:brightness(.9)}
+.btn--ghost{background:transparent;color:var(--denim);border-color:var(--stone)}
+.btn--ghost:hover{filter:none;background:var(--cloud)}
+.btn--light{background:var(--ivory);border-color:var(--ivory);color:var(--teal)}
+.btn--block{width:100%}
+.btnrow{display:flex;flex-wrap:wrap;gap:14px}
+.textlink{display:inline-flex;align-items:center;min-height:44px;font:500 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--denim);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--stone)}
+.textlink:hover{text-decoration-color:var(--denim)}
+
+/* image placeholders: swap via the IMAGES object (or the products array) */
+.ph{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:var(--ar,1/1);background:var(--ph-bg,var(--tint));color:var(--ink);border-radius:var(--r-card);overflow:hidden;text-align:center;padding:12px;font:500 11px/1.5 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.ph::before{content:"[ " attr(data-label) " ]"}
+.ph.has-img::before{content:none}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph--nested{border-radius:var(--r-nested)}
+
+/* announcement */
+.announce{background:var(--denim);color:var(--ivory);text-align:center;padding:12px var(--gutter);font:400 14px/1.5 var(--sans);letter-spacing:.04em}
+.announce p{color:var(--ivory)}
+
+/* disclosures */
+.disclosure{font-size:14px;line-height:1.6;color:var(--soft)}
+.on-dark .disclosure{color:var(--ivory);opacity:.92}
+.social{display:flex;flex-wrap:wrap;gap:6px 24px}
+.social a{display:inline-flex;align-items:center;min-height:44px;font:500 13px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ivory);text-underline-offset:5px}
+
+/* footer band (used by about.html, optional on home.html) */
+.footer{background:var(--teal);color:var(--ivory);padding:clamp(40px,6vw,64px) 0}
+.footer .wrap{display:grid;gap:16px}
+.footer .disclosure{max-width:62em}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:768px){
+  .sec-head--row{align-items:flex-start}
+}
+@media (max-width:480px){
+  .btn{padding:0 22px}
+  .btnrow .btn{width:100%}
+}
+
+
+/* ===== SHOP ===== */
+.shop-hero{padding:clamp(56px,8vw,96px) 0;text-align:center}
+.shop-hero h1{margin-bottom:20px}
+.shop-hero .lead{margin:0 auto 22px}
+.shop-hero .disclosure{max-width:44em;margin:0 auto}
+.group{padding-top:clamp(40px,6vw,72px)}
+.group:last-of-type{padding-bottom:clamp(48px,7vw,88px)}
+.group h2{margin-bottom:clamp(20px,3vw,32px)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px)}
+.pcard{display:flex;flex-direction:column;background:var(--ivory);border:1px solid var(--stone);border-radius:var(--r-card);padding:clamp(12px,1.6vw,16px)}
+.pcard .ph{--ph-bg:var(--cloud);margin-bottom:16px}
+.pcard__brand{font:500 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--label);padding:0 6px}
+.pcard__name{font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.15;color:var(--teal);padding:6px 6px 16px}
+.pcard .btn{margin-top:auto;padding:0 16px}
+.bottom-note{padding-bottom:clamp(40px,6vw,64px)}
+
+@media (max-width:1000px){ .grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:480px){
+  .grid{gap:12px}
+  .pcard{padding:10px}
+  .pcard .btn{font-size:13px;letter-spacing:.1em;padding:0 8px}
+}
+</style>
+</head>
+<body>
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="band band--cloud shop-hero" aria-labelledby="shop-h">
+  <div class="wrap">
+    <p class="eyebrow">Shop my favorites</p>
+    <h1 id="shop-h" class="t68">What I actually use</h1>
+    <p class="lead">My go-to picks, organized by category. Every product links straight to where you can buy it.</p>
+    <p class="disclosure">As an Amazon Associate I earn from qualifying purchases. Some links on this site are affiliate links, which means I may earn a small commission at no extra cost to you.</p>
+  </div>
+</section>
+
+<!-- ===== PRODUCT GROUPS (rendered from the PRODUCTS array) ===== -->
+<div class="wrap" id="groups"></div>
+
+</main>
+
+<!-- ===== DISCLOSURES ===== -->
+<footer class="footer on-dark">
+  <div class="wrap">
+    <p class="disclosure">As an Amazon Associate I earn from qualifying purchases. Some links on this site are affiliate links, which means I may earn a small commission at no extra cost to you.</p>
+    <p class="disclosure">Wellness disclaimer: I am not a doctor, nutritionist or medical professional. Content on this site is for education and information only, not medical advice. Please check with your physician about any medical condition or lifestyle change.</p>
+    <div class="social" data-social></div>
+  </div>
+</footer>
+
+<script>
+/* ===== shared helpers (do not edit unless you know why) ===== */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function siteUrl(path){
+  if(!path) return '#';
+  if(path.charAt(0)!=='/' && !/^https?:\/\//i.test(path)) return path; /* GitHub copy: relative file links */
+  if(/^https?:\/\//i.test(path)) return path;
+  return CONFIG.siteUrl.replace(/\/$/,'') + path;
+}
+function wireLinks(root){
+  (root||document).querySelectorAll('a[data-href]').forEach(function(a){
+    var k=a.getAttribute('data-href');
+    a.href = siteUrl(CONFIG.paths[k] || k);
+  });
+}
+function hydrateImages(root){
+  (root||document).querySelectorAll('.ph').forEach(function(el){
+    if(el.dataset.done) return; el.dataset.done='1';
+    var cfg=(el.dataset.img && typeof IMAGES!=='undefined' && IMAGES[el.dataset.img]) || {};
+    var src=el.dataset.src||cfg.src||'';
+    var alt=el.dataset.alt||cfg.alt||'';
+    if(src){
+      var i=document.createElement('img');
+      i.src=src; i.alt=alt; i.loading='lazy'; i.decoding='async';
+      el.appendChild(i); el.classList.add('has-img');
+      el.removeAttribute('role'); el.removeAttribute('aria-label');
+    } else {
+      el.setAttribute('role','img');
+      el.setAttribute('aria-label','Image placeholder: '+(alt||el.dataset.label));
+    }
+  });
+}
+function socialHtml(){
+  var out=[];
+  if(CONFIG.social.instagram) out.push('<a href="'+esc(CONFIG.social.instagram)+'" target="_blank" rel="noopener">Instagram</a>');
+  if(CONFIG.social.pinterest) out.push('<a href="'+esc(CONFIG.social.pinterest)+'" target="_blank" rel="noopener">Pinterest</a>');
+  return out.join('');
+}
+function renderSocial(){
+  document.querySelectorAll('[data-social]').forEach(function(el){
+    var h=socialHtml();
+    if(h) el.innerHTML=h; else el.remove();
+  });
+}
+
+
+(function(){
+  var html = CATEGORIES.map(function(cat, gi){
+    var items = PRODUCTS.filter(function(p){ return p.category === cat; });
+    if(!items.length) return '';
+    var id='g'+gi;
+    return '<section class="group" aria-labelledby="'+id+'"><h2 id="'+id+'" class="t38">'+esc(cat)+'</h2><div class="grid">' +
+      items.map(function(p){
+        var live = p.url && p.url !== '#';
+        return '<article class="pcard">' +
+          '<div class="ph ph--nested" data-src="'+esc(p.image)+'" data-alt="'+esc(p.name)+'" data-label="Product image"></div>' +
+          '<p class="pcard__brand">'+esc(p.brand)+'</p>' +
+          '<h3 class="pcard__name">'+esc(p.name)+'</h3>' +
+          '<a class="btn btn--block" href="'+(live?esc(p.url):'#')+'" target="_blank" rel="sponsored noopener"'+(live?'':' onclick="return false" aria-disabled="true"')+'>Shop now<span class="sr">: '+esc(p.name)+' (affiliate link, opens in a new tab)</span></a>' +
+          '</article>';
+      }).join('') + '</div></section>';
+  }).join('');
+  document.getElementById('groups').innerHTML = html;
+  hydrateImages(); renderSocial();
+})();
+</script>
+</body>
+</html>
